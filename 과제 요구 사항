@@ -1,17 +1,18 @@
 ### API 명세서
 ================
-|MeThod|URL|Request|Response|
-|------|---|-------|--------|
-|GET   |/board/list|-|[
-    {
-        "id": 1,
-        "title": "title1",
-        "userName": "name1",
-        "content": "newcontent",
-        "createdAt": "2023-04-18T14:08:58.063583",
-        "modifiedAt": "2023-04-18T14:08:58.063583"
-    }
-]|
+|MeThod|URL        |Request|Response|
+|------|-----------|------|------------------------------------------------|
+|GET   |/board/list|------|[                                               |
+|      |           |------|  {                                             |
+|      |           |------|     "id": 1,                                   |
+|      |           |------|     "title": "title1",                         |
+|      |           |------|     "userName": "name1",                       |            
+|      |           |------|     "content": "newcontent",                   |
+|      |           |------|     "createdAt": "2023-04-18T14:08:58.063583", |
+|      |           |------|     "modifiedAt": "2023-04-18T14:08:58.063583" |
+|      |           |------|   }                                            |
+|      |           |------|]                                               |
+
 |GET   |/board/{id}|-|{
     "id": 2,
     "title": "title1",
@@ -51,3 +52,6 @@
 }|{
     "success": true
 }|
+
+
+
