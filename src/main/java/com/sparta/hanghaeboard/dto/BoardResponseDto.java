@@ -18,9 +18,9 @@ public class BoardResponseDto {
     private String title;
     private String userName;
     private String content;
-    @CreatedDate
+//    @CreatedDate
     private LocalDateTime createdAt;
-    @LastModifiedDate
+//    @LastModifiedDate
     private LocalDateTime modifiedAt;
 
     public BoardResponseDto(Board board) {

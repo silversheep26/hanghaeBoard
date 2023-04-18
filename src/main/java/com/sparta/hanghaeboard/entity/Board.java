@@ -1,6 +1,5 @@
 package com.sparta.hanghaeboard.entity;
 
-import com.sparta.hanghaeboard.dto.BoardPasswordDto;
 import com.sparta.hanghaeboard.dto.BoardRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

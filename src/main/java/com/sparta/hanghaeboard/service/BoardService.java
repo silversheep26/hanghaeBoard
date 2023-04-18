@@ -6,15 +6,11 @@ import com.sparta.hanghaeboard.dto.BoardResponseDto;
 import com.sparta.hanghaeboard.dto.deleteDto;
 import com.sparta.hanghaeboard.entity.Board;
 import com.sparta.hanghaeboard.repository.BoardRepository;
-import org.hibernate.boot.model.naming.IllegalIdentifierException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.util.LinkedList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -58,7 +54,7 @@ public class BoardService {
 
     private Board checkBoard(Long id) {
         return boardRepository.findById(id).orElseThrow(
-                () -> new IllegalIdentifierException("선택한 게시물이 존재하지 않습니다.")
+                () -> new IllegalArgumentException("선택한 게시물이 존재하지 않습니다.")
         );
     }
 
@@ -67,9 +63,11 @@ public class BoardService {
     public BoardResponseDto updateBoard(Long id, BoardRequestDto requestDto) {
         // 수정하기 위해 받아온 board 의 id 를 사용하여 해당 board 인스턴스가 존재하는지 확인 후 가져오기
         Board board = checkBoard(id);
-        if (requestDto.getPassword().equals(board.getPassword())) {
-            board.update(requestDto);
+        if (!requestDto.getPassword().equals(board.getPassword())) {
+            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
+        board.update(requestDto);
+
         return new BoardResponseDto(board);
     }
 
@@ -78,7 +76,7 @@ public class BoardService {
         // 삭제하기 위해 받아온 board 의 id 를 사용하여 해당 board 인스턴스가 존재하는지 확인 후 가져오기
         Board board = checkBoard(id);
         if (!requestDto.getPassword().equals(board.getPassword())) {
-            throw new IllegalIdentifierException("비밀번호가 일치하지 않습니다.");
+            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
         boardRepository.delete(board);
 
@@ -86,14 +84,3 @@ public class BoardService {
     }
 }
 
-
-/*
-        if(requestDto.getPassword().equals(board.getPassword())){
-            return boardRepository.delete(board).orElseThrow(
-                    () -> new IllegalIdentifierException("선택한 게시물이 존재하지 않습니다.")
-            boardRepository.delete(board);
-            return "success : true";
-        } else return "success : false";
- */
-
-//        return new BoardResponseDto((Board) boardRepository);

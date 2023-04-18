@@ -1,6 +1,5 @@
 package com.sparta.hanghaeboard.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
