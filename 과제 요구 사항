@@ -1,0 +1,14 @@
+### API 명세서
+================
+|MeThod|URL|Request|Response|
+|------|---|-------|--------|
+|GET   |/board/list|-||
+|GET   |/board/{id}|-||
+|POST  |/board/create|{
+    "title":"title1",
+    "userName":"name1",
+    "password":"123",
+    "content":"newcontent"
+}||
+|PUT   |/board/update/{id}||
+|DELETE|/board/delete/{id}||
