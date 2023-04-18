@@ -2,13 +2,52 @@
 ================
 |MeThod|URL|Request|Response|
 |------|---|-------|--------|
-|GET   |/board/list|-||
-|GET   |/board/{id}|-||
+|GET   |/board/list|-|[
+    {
+        "id": 1,
+        "title": "title1",
+        "userName": "name1",
+        "content": "newcontent",
+        "createdAt": "2023-04-18T14:08:58.063583",
+        "modifiedAt": "2023-04-18T14:08:58.063583"
+    }
+]|
+|GET   |/board/{id}|-|{
+    "id": 2,
+    "title": "title1",
+    "userName": "name1",
+    "content": "newcontent",
+    "createdAt": "2023-04-18T14:12:51.364289",
+    "modifiedAt": "2023-04-18T14:12:51.364289"
+}|
 |POST  |/board/create|{
     "title":"title1",
     "userName":"name1",
     "password":"123",
     "content":"newcontent"
-}||
-|PUT   |/board/update/{id}||
-|DELETE|/board/delete/{id}||
+}|{
+    "id": 1,
+    "title": "title1",
+    "userName": "name1",
+    "content": "newcontent",
+    "createdAt": "2023-04-18T14:08:58.0635833",
+    "modifiedAt": "2023-04-18T14:08:58.0635833"
+}|
+|PUT   |/board/update/{id}|{
+    "title":"newtitle",
+    "userName":"newname",
+    "password":"123",
+    "content":"contents"
+}|{
+    "id": 1,
+    "title": "newtitle",
+    "userName": "newname",
+    "content": "contents",
+    "createdAt": "2023-04-18T14:08:58.063583",
+    "modifiedAt": "2023-04-18T14:08:58.063583"
+}|
+|DELETE|/board/delete/{id}|{
+    "password":"123"
+}|{
+    "success": true
+}|
